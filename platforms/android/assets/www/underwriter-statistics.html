@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jQuery Mobile Web App</title>
+<link href="css/jquery.mobile.theme-1.3.1.min.css" rel="stylesheet"
+	type="text/css" />
+<link href="css/jquery.mobile.structure-1.3.1.min.css" rel="stylesheet"
+	type="text/css" />
+<script src="cordova.js" type="text/javascript"></script>
+<script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="js/ireflect.js" type="text/javascript"></script>
+<script src="js/jquery.mobile-1.3.1.min.js" type="text/javascript"></script>
+<script src="js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="js/purl.js" type="text/javascript"></script>
+<script src="js/jquery.base64.js" type="text/javascript"></script>
+<script src="js/smsplugin.js" type="text/javascript"></script>
+<script src="js/jquery.populate.pack.js" type="text/javascript"></script>
+<style type="text/css">
+label.error {
+	width: auto;
+	display: inline;
+	color: red;
+}
+
+.ui-navbar li .ui-btn .ui-btn-inner,.ui-navbar li .ui-btn {
+	border: 0 solid red !important;
+}
+
+#button_logout .ui-btn-inner {
+	width: 35px;
+	height: 35px;
+	margin: -6px; /*Modify to change icon position wrt the header*/
+	border: none !important;
+}
+
+.ui-icon-custom {
+	background: url(img/button_logout.png) 50% 50% no-repeat;
+	background-size: 35px 35px;
+	width: 35px;
+	height: 35px;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	margin: 0 !important;
+}
+
+.ui-icon-customhome {
+	background: url(img/home.png) 50% 50% no-repeat;
+	background-size: 35px 35px;
+	width: 35px;
+	height: 35px;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	margin: 0 !important;
+}
+
+.ui-icon-customshare {
+	background: url(img/share.png) 50% 50% no-repeat;
+	background-size: 35px 35px;
+	width: 35px;
+	height: 35px;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	margin: 0 !important;
+}
+
+.ui-icon-customsearch {
+	background: url(img/search.png) 50% 50% no-repeat;
+	background-size: 35px 35px;
+	width: 35px;
+	height: 35px;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	margin: 0 !important;
+}
+
+.ui-icon-customsettings {
+	background: url(img/settings.jpg) 50% 50% no-repeat;
+	background-size: 35px 35px;
+	width: 35px;
+	height: 35px;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	margin: 0 !important;
+}
+
+.ui-icon-customrefresh {
+	background: url(img/refresh.jpg) 50% 50% no-repeat;
+	background-size: 35px 35px;
+	width: 35px;
+	height: 35px;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	margin: 0 !important;
+}
+
+table {
+	border-collapse: collapse;
+	table-layout: fixed;
+	width: 310px;
+}
+
+table td {
+	width: 100px;
+	word-wrap: break-word;
+}
+</style>
+</head>
+
+<body>
+	 <div style="position: relative; background: url('img/header_background.jpg'); width: 100%; height: 52px;">
+  <div style="position: absolute; bottom: 0; left: 0.5em; width: 100%; font-weight: bold; color: #fff;">
+  <p>UNDERWRITER STATISTICS</p>
+  </div>
+  </div>
+	<div align="center" data-role="content" id="Div6"
+		name="contentConfirmation">
+		<form id="loginForm" method="POST">
+			
+			<div data-role="fieldcontain" align="left">
+					<label>UnderWriter Name</label><br> <select id="client_country">
+						<option value="Browse & Select">Browse & Select</option>
+						<option value="SYN1036 QBE MARINE & ENERGY SYN ">SYN1036 QBE MARINE & ENERGY SYN </option>
+						<option value="SYN2488 ACE UNDERWRITING AGENCIES ">SYN2488 ACE UNDERWRITING AGENCIES </option>
+						<option value="SYN2003 CATLIN UNDERWRITING ">SYN2003 CATLIN UNDERWRITING </option>
+						<option value="SYN1414 ASCOT UNDERWRITING">SYN1414 ASCOT UNDERWRITING</option>
+						<option value="ROYAL & SUN ALLIANCE INSURANCE PLC ">ROYAL & SUN ALLIANCE INSURANCE PLC </option>
+						<option value="CHUBB INSURANCE COMPANY OF EUROPE ">CHUBB INSURANCE COMPANY OF EUROPE </option>
+					</select> </label>
+				</div>
+			
+			<div data-role="fieldcontain" align="left">
+					<label>Business</label><br> <select id="client_country">
+						<option value="Browse & Select">Browse & Select</option>
+						<option value="Aviation Hull">Aviation Hull</option>
+						<option value="Marine Cargo">Marine Cargo</option>
+						<option value="Marine Hull">Marine Hull</option>
+						<option value="Construction">Construction</option>
+						<option value="Liability">Liability</option>
+					</select> </label>
+				</div>
+
+			<div data-role="fieldcontain" align="left">
+				<label>Claim Settlement experience</label><br> <input
+					id="username" name="uid_r" type="text" value="" placeholder="">
+			</div>
+
+			<div data-role="fieldcontain" align="left">
+				<label>Total business through Aon</label><br> <input
+					id="username" name="uid_r" type="text" value="" placeholder="">
+			</div>
+
+			<div id="message" style="color: red"></div>
+			<div class="ui-grid-a">
+				<div class="ui-body ui-body-b">
+					<div class="ui-block-a">
+						<button data-theme="e" type="button" id="submitlogin"
+							onclick="window.location='main-menu.html'">Save</button>
+					</div>
+				</div>
+			</div>
+	</div>
+	<div data-role="content" style= "width:150px;">
+    <button data-theme="c" type="button" id="back">Back</button>
+    </div>
+	</form>
+	<div data-role="footer" data-theme="f">
+		<h4>&copy; 2014 CGI Group Inc.</h4>
+	</div>
+</body>
+</html>

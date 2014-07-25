@@ -1,0 +1,277 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jQuery Mobile Web App</title>
+
+<link href="css/jquery.mobile.theme-1.3.1.min.css" rel="stylesheet"
+	type="text/css" />
+<link href="css/jquery.mobile.structure-1.3.1.min.css" rel="stylesheet"
+	type="text/css" />
+<script src="cordova.js" type="text/javascript"></script>
+<script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="js/ireflect.js" type="text/javascript"></script>
+<script src="js/jquery.mobile-1.3.1.min.js" type="text/javascript"></script>
+<script src="js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="js/purl.js" type="text/javascript"></script>
+<script src="js/jquery.base64.js" type="text/javascript"></script>
+<script src="js/smsplugin.js" type="text/javascript"></script>
+<script src="js/jquery.populate.pack.js" type="text/javascript"></script>
+
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style type="text/css">
+label.error {
+	width: auto;
+	display: inline;
+	color: red;
+}
+
+.ui-navbar li .ui-btn .ui-btn-inner,.ui-navbar li .ui-btn {
+	border: 0 solid red !important;
+}
+
+#button_logout .ui-btn-inner {
+	width: 35px;
+	height: 35px;
+	margin: -6px; /*Modify to change icon position wrt the header*/
+	border: none !important;
+}
+
+.ui-icon-custom {
+	background: url(img/button_logout.png) 50% 50% no-repeat;
+	background-size: 35px 35px;
+	width: 35px;
+	height: 35px;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	margin: 0 !important;
+}
+
+.ui-icon-customhome {
+	background: url(img/home.png) 50% 50% no-repeat;
+	background-size: 35px 35px;
+	width: 35px;
+	height: 35px;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	margin: 0 !important;
+}
+
+.ui-icon-customshare {
+	background: url(img/share.png) 50% 50% no-repeat;
+	background-size: 35px 35px;
+	width: 35px;
+	height: 35px;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	margin: 0 !important;
+}
+
+.ui-icon-customsearch {
+	background: url(img/search.png) 50% 50% no-repeat;
+	background-size: 35px 35px;
+	width: 35px;
+	height: 35px;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	margin: 0 !important;
+}
+
+.ui-icon-customsettings {
+	background: url(img/settings.jpg) 50% 50% no-repeat;
+	background-size: 35px 35px;
+	width: 35px;
+	height: 35px;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	margin: 0 !important;
+}
+
+.ui-icon-customrefresh {
+	background: url(img/refresh.jpg) 50% 50% no-repeat;
+	background-size: 35px 35px;
+	width: 35px;
+	height: 35px;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	margin: 0 !important;
+}
+
+table {
+	border-collapse: collapse;
+	table-layout: fixed;
+	width: 310px;
+}
+
+table td {
+	width: 100px;
+	word-wrap: break-word;
+}
+</style>
+
+</head>
+<body>
+	<div data-role="page" id="add-new-client-page">
+    <script type="text/javascript">
+	$('#add-new-client-page').on('pageinit',null,function(event){
+		
+		$('#add_new_client_submit').on('click',null,function(event){
+			console.log('add new client button clicked');
+			
+			var clientObject = new Object();
+			clientObject.clientName=$("#client_name").val();
+			clientObject.product=$("#product").val();
+			clientObject.clientCover=$("#client_cover").val();
+			clientObject.brokerageAgreed=$("#brokerage_agreed_by_client").val();
+			clientObject.clientCountry=$("#client_country").val();
+			clientObject.riskType=$("#risk_type").val();
+			clientObject.placingMethods=$("#placing_methods").val();
+			clientObject.businessType=$("#business_type").val();
+			
+			var clientArray= null;
+			var jsonArrayStored=null;
+			try{
+				clientArray=sessionStorage.getItem("client-array-key");
+				jsonArrayStored = $.parseJSON(clientArray);
+			}catch(e){
+
+			}
+			
+			if(!$.isArray(jsonArrayStored)){
+				console.log("array init");
+				jsonArrayStored = new Array();
+			}
+			jsonArrayStored.push(clientObject);
+			var dataJsonClient = JSON.stringify(jsonArrayStored);
+			sessionStorage.setItem("client-array-key",dataJsonClient);
+			console.log("item added");
+			$.mobile.changePage( "client-visit.html", {
+				  transition: "slide",
+				  reverse: false,
+				  changeHash: false
+			});
+		});
+		
+		 $('#back').on('click',null,function(event){
+				
+				$.mobile.changePage( "client-visit.html", {
+					  transition: "slide",
+					  reverse: true,
+					  changeHash: false
+				});
+			 });
+	});
+	</script>
+	<!-- 	<div data-role="header" data-theme="b">
+			<img src="img/aon_logo.png" alt="image"
+				style="width: auto; height: auto; background-color: #FFF">
+		</div> -->
+		
+		
+  <!-- <div data-role="header" data-theme="f">
+  <img src="img/header_background.jpg" alt="image"
+			style="width: 100%; height: 52px; background-color: #FFF">
+  <h3>Main Menu</h3>
+  </div> -->
+  <div style="position: relative; background: url('img/header_background.jpg'); width: 100%; height: 52px;">
+  <div style="position: absolute; bottom: 0; left: 0.5em; width: 100%; font-weight: bold; color: #fff;">
+  <p>ADD NEW CLIENT VISIT</p>
+  </div>
+  </div>
+		
+		<div align="center" data-role="content" id="Div6"
+			name="contentConfirmation">
+			<form id="loginForm" method="POST">
+
+				<div data-role="fieldcontain" align="left">
+					<label>Client Name</label><br> <input id="client_name"
+						name="uid_r" type="text">
+				</div>
+
+				<div data-role="fieldcontain" align="left">
+					<label>Product</label><br> <input id="product" name="uid_r"
+						type="text">
+				</div>
+
+				<div data-role="fieldcontain" align="left">
+					<label>Client Cover</label><br> <input id="client_cover"
+						name="uid_r" type="text">
+				</div>
+
+				<div data-role="fieldcontain" align="left">
+					<label>Proposed Brokerage Agreed by Client</label><br> <input
+						id="brokerage_agreed_by_client" name="uid_r" type="text">
+				</div>
+
+				<div data-role="fieldcontain" align="left">
+					<label>Client Country</label><br> <select id="client_country">
+						<option value="Browse & Select">Browse & Select</option>
+						<option value="Australia">Australia</option>
+						<option value="Bermuda">Bermuda</option>
+						<option value="France">France</option>
+						<option value="United Kingdom">United Kingdom</option>
+						<option value="USA">USA</option>
+						<option value="Finland">Finland</option>
+					</select> </label>
+				</div>
+				<div data-role="fieldcontain" align="left">
+					<label>Risk Type</label><br> <select id="risk_type">
+						<option value="Browse & Select">Browse & Select</option>
+						<option value="Facultative Direct">Facultative Direct</option>
+						<option value="Facultative R/I Period">Facultative R/I
+							Period</option>
+						<option value="Facultative XL">Facultative XL</option>
+						<option value="Lineslip">Lineslip</option>
+						<option value="Quota Share">Quota Share</option>
+						<option value="Proportionality Treaty">Proportionality
+							Treaty</option>
+					</select> </label>
+				</div>
+
+				<div data-role="fieldcontain" align="left">
+					<label>Placing Methods</label><br> <select
+						id="placing_methods">
+						<option value="Browse & Select">Browse & Select</option>
+						<option value="Horizontal Coinsurance">Horizontal
+							Coinsurance</option>
+						<option value="Vertical Coinsurance">Vertical Coinsurance</option>
+						<option value="Facilities">Facilities</option>
+						<option value="Single Insurer">Single Insurer</option>
+					</select> </label>
+				</div>
+
+				<div data-role="fieldcontain" align="left">
+					<label>Business Type</label><br> <select id="business_type">
+						<option value="Browse & Select">Browse & Select</option>
+						<option value="New Business. Existing Client">New
+							Business. Existing Client</option>
+						<option value="New Business. New Client">New Business.
+							New Client</option>
+						<option value="Renewal">Renewal</option>
+					</select>
+				</div>
+				
+				<div id="message" style="color: red"></div>
+				<div class="ui-grid-a">
+					<div class="ui-body ui-body-b">
+						<div class="ui-block-a">
+							 <button data-theme="c" type="button" id="back">Back</button>
+						</div>
+						<div class="ui-block-b">
+						 <button data-theme="c" type="button" id="add_new_client_submit" >Save</button>
+					</div>
+					</div>
+				</div>
+		</div>
+		</form>
+		<div data-role="footer" data-theme="f">
+			<h4>&copy; 2014 CGI Group Inc.</h4>
+		</div>
+	</div>
+</body>
+</html>
