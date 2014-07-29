@@ -19,8 +19,10 @@
 
 package io.cordova.hellocordova;
 
+import org.apache.cordova.Config;
+import org.apache.cordova.CordovaActivity;
+
 import android.os.Bundle;
-import org.apache.cordova.*;
 
 public class HelloCordova extends CordovaActivity 
 {

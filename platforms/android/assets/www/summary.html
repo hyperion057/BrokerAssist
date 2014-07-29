@@ -109,19 +109,11 @@ table td {
 </head>
 
 <body>
-<div data-role="page" id="client-visit-summary-page">
+<div data-role="page" id="summary">
     <script type="text/javascript">
-	$('#client-visit-summary-page').on('pageinit',null,function(event){
+	$('#summary').on('pageinit',null,function(event){
 	
 		try{
-			$('#back').on('click',null,function(event){
-				$.mobile.changePage( "client-visit.html", {
-					  transition: "slide",
-					  reverse: false,
-					  changeHash: false
-				});
-			 });
-			
 			var clientList=sessionStorage.getItem("client-array-key");
 			console.log(clientList);
 			var jsonArrayStored = $.parseJSON(clientList);
@@ -154,9 +146,14 @@ table td {
 		        $("#set").append(content);
 		        // $("#set").append(content).collapsibleset('refresh');
 			}
-		}catch(err){
-		}
-			
+		}catch(err){}
+		$('#back').on('click',null,function(event){
+			$.mobile.changePage( "index.html", {
+				  transition: "slide",
+				  reverse: false,
+				  changeHash: false
+			});
+		 });
 	});
 	</script>
  <div style="position: relative; background: url('img/header_background.jpg'); width: 100%; height: 52px;">
@@ -169,7 +166,7 @@ table td {
 		</div>
   </div>
     <div data-role="content" style= "width:150px;">
-    <button data-theme="c" type="button" id="back">Back</button>
+     <a style="color:black; text-decoration:none" data-transition="slide" data-direction="reverse" href="client-visit.html"><button data-theme="c" type="button" id="back">Back</button></a>
     </div>
       <div data-role="footer" data-theme="f" style="height:10%;">
       <h4>&copy; 2014 CGI Group Inc.</h4>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -21,9 +21,11 @@ label.error {
 	display: inline;
 	color: red;
 }
-.ui-navbar li .ui-btn .ui-btn-inner, .ui-navbar li .ui-btn {
+
+.ui-navbar li .ui-btn .ui-btn-inner,.ui-navbar li .ui-btn {
     border: 0 solid red !important;
 }
+
 #button_logout .ui-btn-inner {
                 width: 35px;
                 height: 35px;
@@ -86,25 +88,19 @@ label.error {
     margin: 0 !important;
 }
 
-table {border-collapse:collapse; table-layout:fixed; width:310px;}
-table td {width:100px; word-wrap:break-word;}
 
 </style>
 </head>
 <body>
 <div data-role="page" id="main-menu">
-  <!-- <div data-role="header" data-theme="f">
-  <img src="img/header_background.jpg" alt="image"
-			style="width: 100%; height: 52px; background-color: #FFF">
-  <h3>Main Menu</h3>
-  </div> -->
+
   <div style="position: relative; background: url('img/header_background.jpg'); width: 100%; height: 52px;">
   <div style="position: absolute; bottom: 0; left: 0.5em; width: 100%; font-weight: bold; color: #fff;">
   <p>MAIN MENU</p>
   </div>
   </div>
   <div data-role="content" style="height:70%;">
-    <ul data-role="listview">
+    <ul data-role="listview" data-split-icon = "arrow-r" >
       <li><a data-transition="slide" data-theme="e" href="client-visit.html">
         <h3>Client Visit</h3>
         <p>Create Entry related to a client.</p>
@@ -120,8 +116,18 @@ table td {width:100px; word-wrap:break-word;}
 	        <p>See Underwriter Stats.</p>
       	</a>
       </li>
+      <li><a data-transition="slide" data-theme="e" href="test-storage.html">
+        <h3>Test Page</h3>
+        <p>For testing purpose</p>
+      </a>
+      </li>
     </ul>
   </div>
+  
+  <div data-role="content" style= "width:150px;">
+    <a style="color:black; text-decoration:none" data-transition="slide" data-direction="reverse" href="index.html"><button data-theme="c" type="button" id="back">Back</button></a>
+    </div>
+  
       <div data-role="footer" data-theme="f" style="height:10%;">
       <h4>&copy; 2014 CGI Group Inc.</h4>
     </div>

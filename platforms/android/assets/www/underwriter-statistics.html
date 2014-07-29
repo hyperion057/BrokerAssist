@@ -109,6 +109,22 @@ table td {
 </head>
 
 <body>
+
+<div data-role="page" id="underwriter-statistics">
+<script type="text/javascript">
+	$('#underwriter-statistics').on('pageinit',null,function(event){
+		$('#back').on('click',null,function(event){
+			
+			$.mobile.changePage( "main-menu.html", {
+				  transition: "slide",
+				  reverse: false,
+				  changeHash: false
+			});
+		 });
+		});
+		</script>
+
+
 	 <div style="position: relative; background: url('img/header_background.jpg'); width: 100%; height: 52px;">
   <div style="position: absolute; bottom: 0; left: 0.5em; width: 100%; font-weight: bold; color: #fff;">
   <p>UNDERWRITER STATISTICS</p>
@@ -152,21 +168,15 @@ table td {
 			</div>
 
 			<div id="message" style="color: red"></div>
-			<div class="ui-grid-a">
-				<div class="ui-body ui-body-b">
-					<div class="ui-block-a">
-						<button data-theme="e" type="button" id="submitlogin"
-							onclick="window.location='main-menu.html'">Save</button>
-					</div>
-				</div>
-			</div>
+			
 	</div>
 	<div data-role="content" style= "width:150px;">
-    <button data-theme="c" type="button" id="back">Back</button>
+    <a style="color:black; text-decoration:none" data-transition="slide" data-direction="reverse" href="main-menu.html"><button data-theme="c" type="button" id="back">Back</button></a>
     </div>
 	</form>
 	<div data-role="footer" data-theme="f">
 		<h4>&copy; 2014 CGI Group Inc.</h4>
+	</div>
 	</div>
 </body>
 </html>
