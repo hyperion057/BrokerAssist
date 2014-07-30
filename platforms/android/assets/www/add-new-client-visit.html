@@ -125,9 +125,10 @@ table td {
 			
 			var clientObject = new Object();
 			clientObject.clientName=$("#client_name").val();
-			clientObject.product=$("#product").val();
+			clientObject.product=$("#class_of_risk").val();
 			clientObject.clientCover=$("#client_cover").val();
 			clientObject.brokerageAgreed=$("#brokerage_agreed_by_client").val();
+			clientObject.comment=$("#add_comment").val();
 			clientObject.clientCountry=$("#client_country").val();
 			clientObject.riskType=$("#risk_type").val();
 			clientObject.placingMethods=$("#placing_methods").val();
@@ -194,7 +195,7 @@ table td {
 				</div>
 
 				<div data-role="fieldcontain" align="left">
-					<label>Product</label><br> <input id="product" name="uid_r"
+					<label>Class of Risk</label><br> <input id="class_of_risk" name="uid_r"
 						type="text">
 				</div>
 
@@ -206,6 +207,11 @@ table td {
 				<div data-role="fieldcontain" align="left">
 					<label>Proposed Brokerage Agreed by Client</label><br> <input
 						id="brokerage_agreed_by_client" name="uid_r" type="text">
+				</div>
+
+                <div data-role="fieldcontain" align="left">
+					<label>Comment</label><br> <input
+						id="add_comment" name="uid_r" type="text">
 				</div>
 
 				<div data-role="fieldcontain" align="left">

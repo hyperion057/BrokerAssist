@@ -105,6 +105,12 @@ table td {
 	width: 100px;
 	word-wrap: break-word;
 }
+
+body .ui-body-c{
+    font-family:"Droid Serif";
+   /*  font-size:200%; */
+}
+
 </style>
 </head>
 
@@ -113,14 +119,53 @@ table td {
 <div data-role="page" id="underwriter-statistics">
 <script type="text/javascript">
 	$('#underwriter-statistics').on('pageinit',null,function(event){
-		$('#back').on('click',null,function(event){
-			
-			$.mobile.changePage( "main-menu.html", {
-				  transition: "slide",
-				  reverse: false,
-				  changeHash: false
-			});
+		
+		$('#business').on('change',null,function(event) 
+				{
+				  var underwriterName = $("#underwriter_name").val();
+			      var businessValue = $("#business").val(); 
+			      console.log('Spinner click registered. Selected Value is :' +businessValue+','+underwriterName);
+			      if(underwriterName!='Browse & Select'){
+			    	  if(underwriterName=='SYN1036 QBE MARINE & ENERGY SYN' && businessValue=='Aviation Hull'){
+			    		  $("#claim_settlement_experience").val('100% Ontime');
+			    		  $("#total_business").val('US$ 90 million');
+			    	  } else  if(underwriterName=='SYN1036 QBE MARINE & ENERGY SYN' && businessValue=='Marine Cargo'){
+			    		  $("#claim_settlement_experience").val('100% Ontime');
+			    		  $("#total_business").val('US$ 100 million');
+			    	  } else  if(underwriterName=='SYN1036 QBE MARINE & ENERGY SYN' && businessValue=='Marine Hull'){
+			    		  $("#claim_settlement_experience").val('100% Ontime');
+			    		  $("#total_business").val('US$ 50 million');
+			    	  } else {
+			    		  $("#claim_settlement_experience").val('');
+			    		  $("#total_business").val('');
+			    	  }
+			      } 
 		 });
+		
+		
+		$('#underwriter_name').on('change',null,function(event) 
+				{
+				  var underwriterName = $("#underwriter_name").val();
+			      var businessValue = $("#business").val(); 
+			      console.log('Spinner click registered. Selected Value is :' +businessValue+','+underwriterName);
+			      if(underwriterName!='Browse & Select'){
+			    	  if(underwriterName=='SYN1036 QBE MARINE & ENERGY SYN' && businessValue=='Aviation Hull'){
+			    		  $("#claim_settlement_experience").val('100% Ontime');
+			    		  $("#total_business").val('US$ 90 million');
+			    	  } else  if(underwriterName=='SYN1036 QBE MARINE & ENERGY SYN' && businessValue=='Marine Cargo'){
+			    		  $("#claim_settlement_experience").val('100% Ontime');
+			    		  $("#total_business").val('US$ 100 million');
+			    	  } else  if(underwriterName=='SYN1036 QBE MARINE & ENERGY SYN' && businessValue=='Marine Hull'){
+			    		  $("#claim_settlement_experience").val('100% Ontime');
+			    		  $("#total_business").val('US$ 50 million');
+			    	  } else {
+			    		  $("#claim_settlement_experience").val('');
+			    		  $("#total_business").val('');
+			    	  }
+			      } 
+		 });
+		
+		
 		});
 		</script>
 
@@ -135,10 +180,10 @@ table td {
 		<form id="loginForm" method="POST">
 			
 			<div data-role="fieldcontain" align="left">
-					<label>UnderWriter Name</label><br> <select id="client_country">
+					<label>UnderWriter Name</label><br> <select id="underwriter_name">
 						<option value="Browse & Select">Browse & Select</option>
-						<option value="SYN1036 QBE MARINE & ENERGY SYN ">SYN1036 QBE MARINE & ENERGY SYN </option>
-						<option value="SYN2488 ACE UNDERWRITING AGENCIES ">SYN2488 ACE UNDERWRITING AGENCIES </option>
+						<option value="SYN1036 QBE MARINE & ENERGY SYN">SYN1036 QBE MARINE & ENERGY SYN</option>
+						<option value="SYN2488 ACE UNDERWRITING AGENCIES">SYN2488 ACE UNDERWRITING AGENCIES</option>
 						<option value="SYN2003 CATLIN UNDERWRITING ">SYN2003 CATLIN UNDERWRITING </option>
 						<option value="SYN1414 ASCOT UNDERWRITING">SYN1414 ASCOT UNDERWRITING</option>
 						<option value="ROYAL & SUN ALLIANCE INSURANCE PLC ">ROYAL & SUN ALLIANCE INSURANCE PLC </option>
@@ -147,7 +192,7 @@ table td {
 				</div>
 			
 			<div data-role="fieldcontain" align="left">
-					<label>Business</label><br> <select id="client_country">
+					<label>Business</label><br> <select id="business">
 						<option value="Browse & Select">Browse & Select</option>
 						<option value="Aviation Hull">Aviation Hull</option>
 						<option value="Marine Cargo">Marine Cargo</option>
@@ -159,12 +204,12 @@ table td {
 
 			<div data-role="fieldcontain" align="left">
 				<label>Claim Settlement experience</label><br> <input
-					id="username" name="uid_r" type="text" value="" placeholder="">
+					id="claim_settlement_experience" class="field left" readonly  name="uid_r" type="text" value="" placeholder="">
 			</div>
 
 			<div data-role="fieldcontain" align="left">
 				<label>Total business through Aon</label><br> <input
-					id="username" name="uid_r" type="text" value="" placeholder="">
+					id="total_business" class="field left" readonly name="uid_r" type="text" value="" placeholder="">
 			</div>
 
 			<div id="message" style="color: red"></div>

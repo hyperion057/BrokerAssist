@@ -125,21 +125,37 @@ footer {
 <div data-role="page" id="index">
     <script type="text/javascript">
 	$('#index').on('pageinit',null,function(event){
+		
 		$('#submitlogin').on('click',null,function(event){
+			console.log('--login button clicked--');
 			
-			$.mobile.changePage( "main-menu.html", {
-				  transition: "slide",
-				  reverse: false,
-				  changeHash: false
-			});
+			var username=$("#username").val();
+		    console.log('username--'+ username);
+			
+		    var password=$("#password").val();
+			console.log('password--'+ password);
+			
+			if(username!="" && password!=""){
+				console.log('in if block--'+ username + password);
+				$.mobile.changePage( "main-menu.html", {
+					  transition: "slide",
+					  reverse: false,
+					  changeHash: false
+				});
+			}else {
+				console.log('in else block--');
+				$('#message').text("Login Failure! Invalid User Id or Password.");
+			}
+			
 		 });
 		});
 		</script>
+		
 	<div data-role="header" data-theme="f">
 		<img src="img/header_background.jpg" alt="image"
 			style="width: 100%; height: 52px; background-color: #FFF">
 	</div>
-	<div align="center" data-role="content" id="Div6"
+	<div align="center" data-role="content" id="Div1"
 		name="contentConfirmation">
 
 		<img src="img/aon_logo.png" alt="image"
@@ -149,24 +165,24 @@ footer {
 		<h3>Login</h3>
 		<form id="loginForm" method="POST">
 			<div data-role="fieldcontain">
-				<input id="username" name="uid_r" type="text" value=""
-					placeholder="Enter your username">
+				<input id="username" name="uid_r" type="text" value="" placeholder="Enter your username">
 			</div>
 			<div data-role="fieldcontain">
-				<input id="password" name="u_pwd" type="password" value=""
-					placeholder="Enter your password">
+				<input id="password" name="u_pwd" type="password" value="" placeholder="Enter your password">
 			</div>
-			<div id="message" style="color: red"></div>
-			<div class="ui-grid-a">
+			 <div id="message" style="color: red"></div>
+			 <div data-role="content" style= "width:150px;">
+   	<button data-theme="c" type="button" id="submitlogin">LOGIN</button></div>
+			 <!-- <div class="ui-grid-a">
 				<div class="ui-body ui-body-b">
 					<div class="ui-block-a">
 						<button data-theme="c" type="button" id="cancellogin">Cancel</button>
-					</div>
+					</div> 
 					<div class="ui-block-b">
-						<button data-theme="h" type="button" id="submitlogin">Login</button>
+						<button data-theme="c" type="button" id="submitlogin">Login</button>
 					</div>
-				</div>
-			</div>
+				 </div>
+			</div>   -->
 	</div>
 	</form>
 
